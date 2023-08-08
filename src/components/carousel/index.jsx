@@ -13,6 +13,7 @@ import PosterFallback from "../../assets/no-poster.png";
 
 import "./Carousel.scss";
 import CircleRating from "../circleRating";
+import Genres from "../genres";
 
 const Carousel = ({ data, loading }) => {
   const carouselContainer = useRef();
@@ -55,6 +56,7 @@ const Carousel = ({ data, loading }) => {
                   <div className="carousel__posterBlock">
                     <Img src={posterUrl} />
                     <CircleRating rating={item.vote_average.toFixed(1)} />
+                    <Genres data={item.genre_ids.slice(0, 2)} />
                   </div>
                   <div className="carousel__textBlock">
                     <span className="carousel__title">
