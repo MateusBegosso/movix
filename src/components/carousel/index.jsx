@@ -15,7 +15,7 @@ import "./Carousel.scss";
 import CircleRating from "../circleRating";
 import Genres from "../genres";
 
-const Carousel = ({ data, loading }) => {
+const Carousel = ({ data, loading, endpoint }) => {
   const carouselContainer = useRef();
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
@@ -67,7 +67,9 @@ const Carousel = ({ data, loading }) => {
                 <div
                   key={item.id}
                   className="carousel__item"
-                  onClick={() => navigate(`/${item.media_type}/${item.id}`)}
+                  onClick={() =>
+                    navigate(`/${item.media_type || endpoint}/${item.id}`)
+                  }
                 >
                   <div className="carousel__posterBlock">
                     <Img src={posterUrl} />
@@ -79,7 +81,9 @@ const Carousel = ({ data, loading }) => {
                       {item.title || item.name}
                     </span>
                     <span className="carousel__date">
-                      {dayjs(item.release_Date).format("DD/MM/YYYY")}
+                      {dayjs(item.release_date || item.first_air_date).format(
+                        "DD/MM/YYYY"
+                      )}
                     </span>
                   </div>
                 </div>

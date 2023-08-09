@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import ContentWrapper from "../contentWrapper";
 
 import "./Footer.scss";
+import logo from "../../assets/tmdb-logo.svg";
 
 const Footer = () => {
   return (
@@ -37,6 +38,10 @@ const Footer = () => {
           >
             <FaLinkedin />
           </a>
+        </div>
+        <div className="tmdb">
+          <p>Powered by:</p>
+          <img src={logo} alt="TMDB logo" />
         </div>
       </ContentWrapper>
     </footer>
