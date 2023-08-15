@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import DetailsBanner from "./detailsBanner";
 import Cast from "./cast";
+import VideosSection from "./videosSection";
 
 const Details = () => {
   const { mediaType, id } = useParams();
@@ -17,6 +18,7 @@ const Details = () => {
     <>
       <DetailsBanner video={data?.results?.[0]} crew={credits?.crew} />
       <Cast data={credits?.cast} loading={creditsLoading} />
+      <VideosSection data={data} loading={loading} />
     </>
   );
 };
