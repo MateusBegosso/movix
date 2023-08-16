@@ -13,7 +13,7 @@ const Popular = () => {
 
   return (
     <section>
-      <div className="carousel">
+      <div className="carousel__section">
         <ContentWrapper>
           <span className="carousel__title">Os mais populares</span>
           <SwitchTabs data={["Filmes", "TV shows"]} onTabChange={onTabChange} />
