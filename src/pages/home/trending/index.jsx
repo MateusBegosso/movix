@@ -13,7 +13,7 @@ const Trending = () => {
 
   return (
     <section>
-      <div className="carousel">
+      <div className="carousel__section">
         <ContentWrapper>
           <span className="carousel__title">Em Alta</span>
           <SwitchTabs data={["Hoje", "Semana"]} onTabChange={onTabChange} />
