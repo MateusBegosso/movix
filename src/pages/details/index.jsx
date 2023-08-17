@@ -19,10 +19,14 @@ const Details = () => {
     <>
       <DetailsBanner video={data?.results?.[0]} crew={credits?.crew} />
       <Cast data={credits?.cast} loading={creditsLoading} />
-      <VideosSection data={data} loading={loading} />
-      <section>
-        <Recommendation mediaType={mediaType} id={id} />
-      </section>
+      {data?.results?.length > 0 && (
+        <>
+          <VideosSection data={data} loading={loading} />
+          <section>
+            <Recommendation mediaType={mediaType} id={id} />
+          </section>
+        </>
+      )}
     </>
   );
 };
