@@ -6,7 +6,9 @@ import Carousel from "../../../components/carousel";
 
 const Trending = () => {
   const [endpoint, setEndpoint] = useState("day");
-  const { data, loading } = useFetch(`/trending/movie/${endpoint}`);
+  const { data, loading } = useFetch(
+    `/trending/movie/${endpoint}?language=pt-BR`
+  );
   const onTabChange = (tab) => {
     setEndpoint(tab === "Hoje" ? "day" : "week");
   };

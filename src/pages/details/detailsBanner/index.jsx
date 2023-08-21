@@ -19,7 +19,7 @@ const DetailsBanner = ({ video, crew }) => {
   const [videoId, setVideoId] = useState(null);
 
   const { mediaType, id } = useParams();
-  const { data, loading } = useFetch(`/${mediaType}/${id}`);
+  const { data, loading } = useFetch(`/${mediaType}/${id}?language=pt-BR`);
 
   const { url } = useSelector((state) => state.home);
 
@@ -73,18 +73,20 @@ const DetailsBanner = ({ video, crew }) => {
                     <Genres data={_genres} />
                     <div className="detailsBanner__row">
                       <CircleRating rating={data.vote_average.toFixed(1)} />
-                      <div
-                        className="detailsBanner__playbtn"
-                        onClick={() => {
-                          setShow(true);
-                          setVideoId(video.key);
-                        }}
-                      >
-                        <PlayIcon />
-                        <span className="detailsBanner__text">
-                          Assista ao trailer
-                        </span>
-                      </div>
+                      {video && (
+                        <div
+                          className="detailsBanner__playbtn"
+                          onClick={() => {
+                            setShow(true);
+                            setVideoId(video.key);
+                          }}
+                        >
+                          <PlayIcon />
+                          <span className="detailsBanner__text">
+                            Assista ao trailer
+                          </span>
+                        </div>
+                      )}
                     </div>
                     <div className="detailsBanner__overview">
                       <div className="detailsBanner__heading">Sinopse</div>

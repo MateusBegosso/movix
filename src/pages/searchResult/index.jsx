@@ -18,7 +18,7 @@ const SearchResult = () => {
   const fetchInitialData = () => {
     setLoading(true);
     fetchDataFromApi(
-      `/search/multi?query=${query}&language=pt-BR&page=${pageNum}`
+      `/search/multi?query=${query}&page=${pageNum}&language=pt-BR`
     ).then((res) => {
       setData(res);
       setPageNum((prev) => prev + 1);
@@ -27,19 +27,19 @@ const SearchResult = () => {
   };
 
   const fetchNextPageData = () => {
-    fetchDataFromApi(`/search/multi?query=${query}&page=${pageNum}`).then(
-      (res) => {
-        if (data?.results) {
-          setData({
-            ...data,
-            results: [...data?.results, ...res.results],
-          });
-        } else {
-          setData(res);
-        }
-        setPageNum((prev) => prev + 1);
+    fetchDataFromApi(
+      `/search/multi?query=${query}&page=${pageNum}&language=pt-BR`
+    ).then((res) => {
+      if (data?.results) {
+        setData({
+          ...data,
+          results: [...data?.results, ...res.results],
+        });
+      } else {
+        setData(res);
       }
-    );
+      setPageNum((prev) => prev + 1);
+    });
   };
 
   useEffect(() => {
