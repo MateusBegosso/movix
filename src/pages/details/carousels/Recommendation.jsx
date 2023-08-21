@@ -5,16 +5,20 @@ import useFetch from "../../../hooks/useFetch";
 
 const Recommendation = ({ mediaType, id }) => {
   const { data, loading, error } = useFetch(
-    `/${mediaType}/${id}/recommendations`
+    `/${mediaType}/${id}/recommendations?language=pt-BR`
   );
 
   return (
-    <Carousel
-      title="Recomendações"
-      data={data?.results}
-      loading={loading}
-      endpoint={mediaType}
-    />
+    <>
+      {data?.results.length > 0 && (
+        <Carousel
+          title="Recomendações"
+          data={data?.results}
+          loading={loading}
+          endpoint={mediaType}
+        />
+      )}
+    </>
   );
 };
 

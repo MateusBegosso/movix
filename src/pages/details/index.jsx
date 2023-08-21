@@ -10,7 +10,9 @@ import Recommendation from "./carousels/Recommendation";
 
 const Details = () => {
   const { mediaType, id } = useParams();
-  const { data, loading } = useFetch(`/${mediaType}/${id}/videos`);
+  const { data, loading } = useFetch(
+    `/${mediaType}/${id}/videos?language=pt-BR`
+  );
   const { data: credits, loading: creditsLoading } = useFetch(
     `/${mediaType}/${id}/credits`
   );
@@ -19,10 +21,12 @@ const Details = () => {
     <>
       <DetailsBanner video={data?.results?.[0]} crew={credits?.crew} />
       <Cast data={credits?.cast} loading={creditsLoading} />
-      <VideosSection data={data} loading={loading} />
-      <section>
-        <Recommendation mediaType={mediaType} id={id} />
-      </section>
+      {data?.results?.length > 0 && (
+        <>
+          <VideosSection data={data} loading={loading} />
+        </>
+      )}
+      <Recommendation mediaType={mediaType} id={id} />
     </>
   );
 };
